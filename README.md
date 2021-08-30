@@ -16,9 +16,30 @@ Install the requirements for the project by running the following command in you
 pip install -r requirements.txt
 ```
 
+## Run the script:
+Default: 
+```
+python start.py [apple ID or phone number]
+```
+Tags: 
+<pre>
+    --cute                          (default) sends cute/caring/lovie-dovie messages (okie ❤️🥰😘) 
+    --mean                          sends moodie messages that tend to pick up fights (k.)
+    --hungry                        sends food related messages (Kk 😋🤤🍕🍩)
+    --random                        sends messages like a bipolar (k. ❤️🥰😘)
+    -f (frequent)                   sends him message more frequently
+    -r (reply)                      adds auto-reply feature, else ghost him without the tag 
+</pre>
+For example: if you want to send a lot of mean messages to your bf with auto-reply feature:
+```
+python start.py -rf --mean [apple ID or phone number]
+```
+
+
 ## TODO Checklist:
-- [ ] f tag: -f <int minutes> user can set how frequently they want to send messages
-- [ ] auto-reply: NLP. reply based on user behavior (prev conversation)
 - [X] logging
 - [X] have this algorithm running somewhere 24/7 - local so far
+- [ ] f tag: -f <int minutes> user can set how frequently they want to send messages
+- [ ] auto-reply: NLP. reply based on user behavior (prev conversation)
 - [ ] fetch new memes from internet
+- [ ] send messages to multiple boyfriends because I can
