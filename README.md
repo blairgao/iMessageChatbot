@@ -16,3 +16,9 @@ Install the requirements for the project by running the following command in you
 pip install -r requirements.txt
 ```
 
+## TODO Checklist:
+- [ ] f tag: -f <int minutes> user can set how frequently they want to send messages
+- [ ] auto-reply: NLP. reply based on user behavior (prev conversation)
+- [X] logging
+- [X] have this algorithm running somewhere 24/7 - local so far
+- [ ] fetch new memes from internet
