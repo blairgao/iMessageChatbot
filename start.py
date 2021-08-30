@@ -6,6 +6,12 @@ import logging
 import subprocess
 import json
 import time
+import requests
+import urllib.request
+import ssl
+
+# Fixed Scraping: SSL: CERTIFICATE_VERIFY_FAILED error
+ssl._create_default_https_context = ssl._create_unverified_context
 
 HELP = """OPTIONS:
     --cute                          (default) sends cute/caring/lovie-dovie messages (okie ❤️🥰😘)
@@ -36,12 +42,18 @@ def sendMessage(message, appleID):
     on run
         tell application "Messages"
             set iMessageService to 1st service whose service type = iMessage
-            set leyla to buddy "''' + appleID + '''" of iMessageService
-            send "''' + message + '''" to leyla
+            set boyfriend to buddy "''' + appleID + '''" of iMessageService
+            send "''' + message + '''" to boyfriend
         end tell
     end run'''
     runAppleScript(script)
     logging.info("Sent" + message + " at " + str(datetime.datetime.now()))
+
+def getMeme(subreddit):
+    response = requests.get("https://meme-api.herokuapp.com/gimme/" + subreddit)
+    url = json.loads(response.text)["url"]
+    # apple script cannot send image file: urllib.request.urlretrieve(url, "meme.jpg")
+    return url
 
 def getMessage(path, category):
     with open(path, 'r') as file:
@@ -58,6 +70,8 @@ def generateMessage(mood, appleID):
     else:
         message = getMessage("cute.json", "greetings")
         sendMessage(message, appleID)
+        meme = getMeme("meme")
+        sendMessage(meme, appleID)
 
 if __name__ == "__main__":
 
@@ -95,8 +109,9 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             print("RAP got interrupted")
             break
-        except:
-            print("Ooops something is broken")
+        except Exception as e:
+            print(e)
+            logging.ERROR(e)
             break
     
 
