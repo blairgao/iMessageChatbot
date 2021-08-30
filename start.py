@@ -56,7 +56,7 @@ def getMeme(subreddit):
     return url
 
 def getMessage(path, category):
-    with open(path, 'r') as file:
+    with open('messages/' + path, 'r') as file:
         data = json.load(file)
     return data[category][0]
 
