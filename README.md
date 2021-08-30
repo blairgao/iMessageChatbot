@@ -43,3 +43,7 @@ python start.py -rf --mean [apple ID or phone number]
 - [ ] auto-reply: NLP. reply based on user behavior (prev conversation)
 - [ ] fetch new memes from internet
 - [ ] send messages to multiple boyfriends because I can
+
+
+## Credits
+Brandon Kao
