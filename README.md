@@ -45,5 +45,8 @@ python start.py -rf --mean [apple ID or phone number]
 - [ ] send messages to multiple boyfriends because I can
 
 
-## Credits
+## Credits:
 Brandon Kao
+Noah Broyles - @noahbroyles
+Gavin Inglis - @ginglis13
+
