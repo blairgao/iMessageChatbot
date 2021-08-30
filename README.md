@@ -39,7 +39,7 @@ python start.py -rf --mean [apple ID or phone number]
 ## TODO Checklist:
 - [X] logging
 - [X] have this algorithm running somewhere 24/7 - local so far
-- [ ] f tag: -f <int minutes> user can set how frequently they want to send messages
+- [ ] f tag: -f [int minutes] user can set how frequently they want to send messages
 - [ ] auto-reply: NLP. reply based on user behavior (prev conversation)
 - [ ] fetch new memes from internet
 - [ ] send messages to multiple boyfriends because I can
