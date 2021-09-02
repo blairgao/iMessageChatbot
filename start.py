@@ -21,6 +21,7 @@ HELP = """OPTIONS:
     -f (frequent)                   sends him message more frequently
     -r (reply)                      adds auto-reply feature, else ghost him without the tag """
 
+subreddit_list = ["BetterEveryLoop", "AnimalsBeingJerks", "meme"]
 
 #todo: https://www.twilio.com/blog/2016/09/how-to-receive-and-respond-to-a-text-message-with-python-flask-and-twilio.html
 
@@ -58,7 +59,8 @@ def getMeme(subreddit):
 def getMessage(path, category):
     with open('messages/' + path, 'r') as file:
         data = json.load(file)
-    return data[category][0]
+    x = random.randint(0, len(data[category]) - 1)
+    return data[category][x]
 
 def generateMessage(mood, appleID):
     if "mean" in mood:
@@ -68,10 +70,14 @@ def generateMessage(mood, appleID):
     elif "random" in mood:
         sendMessage(message, appleID)
     else:
-        message = getMessage("cute.json", "greetings")
-        sendMessage(message, appleID)
-        meme = getMeme("meme")
-        sendMessage(meme, appleID)
+        x = random.randint(0, 11)
+        if x%11 == 0: 
+            message = getMessage("cute.json", "greetings")
+            sendMessage(message, appleID)
+        else:
+            i = random.randint(0, len(subreddit_list) - 1)
+            meme = getMeme(subreddit_list[i])
+            sendMessage(meme, appleID)
 
 if __name__ == "__main__":
 
@@ -102,10 +108,9 @@ if __name__ == "__main__":
         try:
             generateMessage(mood, appleID)
             if 'f' in settings:
-                time.sleep(3000)
+                time.sleep(5)
             else:
-                time.sleep(6000) 
-                print("test")
+                time.sleep(10) 
         except KeyboardInterrupt:
             print("RAP got interrupted")
             break
